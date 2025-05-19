@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <header>
+        <title>
+            Website title
+        </title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+        <nav class="Bar">
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+            <li><a href="{{ url_for('skills') }}">Videos</a></li>
+            <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+            <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+        </ul>
+        </nav>
+           
+        </header>
+</head>
+
+<body>
+    <h6>VIDEO GALLERY</h6>
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <div class="row" id="video_gallery">
+        <script>
+          async function loadVideoGalery() {
+            try {
+              // api call to backend, call GET on the address
+              // this will call @app.route('/api/videos/examples', methods=['GET'])
+              // def get_videos():
+              const res = await fetch('/api/videos/examples');
+              
+              if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+              }
+              // wait for response and store data as json
+              const data = await res.json();
+        
+              if (!Array.isArray(data)) {
+                throw new Error('Invalid data format');
+              }
+              // dynamically create html struct from fetched videos,
+              // for every video loaded create <source/> struct
+              const reviewsHtml = data.map(r => `
+                <div class="column">
+                    <video width="50%" height="auto" controls>
+                        <source src="/static/${r.file_location}${r.file_name}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+              `).join('');
+      
+              // Add the generated HTML to the #images_gallery container
+              document.querySelector('#video_gallery').innerHTML = reviewsHtml;
+      
+            } catch (error) {
+              console.error('Failed to load video:', error);
+            }
+          }
+      
+          loadVideoGalery();
+        </script>
+      </div>
+</body>
+
+<head>
+    <footer>
+        <div class="Contact-info">
+        <p>2024 MrKenn's Handyman. All rights reserved.</p>
+        <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+        <p>Email: kenhandymann@gmail.com</p>
+        <p>For Appontiment call telephone number: +1 (437) 661-0962</p>
+        </div>
+        
+    </footer>
+</head>
+
+
+
+</html>

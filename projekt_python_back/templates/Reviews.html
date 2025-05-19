@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/stylereviews.css') }}">
+  <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body class="reviews">
+  <header>
+    <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+    <nav class="Bar">
+        <ul>
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+            <li><a href="{{ url_for('skills') }}">Videos</a></li>
+            <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+            <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    <h3>Share your experience with our service</h3>
+    <form id="submissionForm">
+      <div class="rating">
+        <input type="number" name="rating" hidden>
+        <i class="bx bx-star star" style="--i: 0;"></i>
+        <i class="bx bx-star star" style="--i: 1;"></i>
+        <i class="bx bx-star star" style="--i: 2;"></i>
+        <i class="bx bx-star star" style="--i: 3;"></i>
+        <i class="bx bx-star star" style="--i: 4;"></i>
+      </div>
+      <textarea id="opinion" name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+      <textarea id="username" name="opinion" cols="30" rows="1" placeholder="username"></textarea>
+      <div class="btn-group">
+        <button type="submit" class="btn submit">Submit</button>
+        <button type="reset" class="btn cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="reviewsSection" class="wrapper2">
+    <h3 style="text-align: center; margin-top: 60px;">Client Reviews</h3>
+  </div>
+
+  <script>
+    const allStar = document.querySelectorAll('.rating .star');
+    const ratingInput = document.querySelector('.rating input');
+    const form = document.getElementById('submissionForm');
+    const reviewsSection = document.getElementById('reviewsSection');
+
+    allStar.forEach((item, idx) => {
+      item.addEventListener('click', () => {
+        ratingInput.value = idx + 1;
+        allStar.forEach(star => {
+          star.classList.replace('bxs-star', 'bx-star');
+          star.classList.remove('active');
+        });
+        for (let i = 0; i <= idx; i++) {
+          allStar[i].classList.replace('bx-star', 'bxs-star');
+          allStar[i].classList.add('active');
+        }
+      });
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const rating = ratingInput.value;
+      const opinion = document.getElementById('opinion').value;
+      const username = document.getElementById('username').value;
+
+      if (!rating || !opinion || !username) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      // call POST on the address /reviews this will call the backend for 
+      // @app.route('/reviews', methods=['POST'])
+      // def add_review():
+      // in the api call as a body pass data { rating, opinion , username}
+      await fetch('/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rating, opinion , username})
+      });
+      // clear form
+      form.reset();
+      allStar.forEach(star => {
+        star.classList.replace('bxs-star', 'bx-star');
+        star.classList.remove('active');
+      });
+      // get data from the backend (including entry we just added)
+      // and update the UI
+      loadReviews();
+    });
+
+    async function loadReviews() {
+      // call get on /api/reviews
+      const res = await fetch('/api/reviews');
+      // wait for response and store data
+      const data = await res.json();
+      // iterate over the results and dynamically create <div> UI elements
+      // filled with data from every entry
+      const reviewsHtml = data.map(r => `
+        <div class="review">
+          <p><strong>Rating:</strong> ${'★'.repeat(r[0])}${'☆'.repeat(5 - r.rating)}</p>
+          <p><strong>Opinion:</strong> ${r[1]}</p>
+          <p><strong>Username:</strong> ${r[2]}</p>
+          <p><strong>Date:</strong> ${r[3]}</p>
+          <hr>
+        </div>
+      `).join('');
+
+      reviewsSection.innerHTML = `
+        <h3 style="text-align: center; margin-top: 60px;">Client Reviews</h3>
+        ${reviewsHtml}
+      `;
+    }
+    // call the method, previously declared only
+    loadReviews();
+  </script>
+
+  <footer>
+    <p>2024 MrKenn's Handyman. All rights reserved.</p>
+    <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+    <p>Email: kenhandymann@gmail.com</p>
+    <p>For Appointment call: +1 (437) 661-0962</p>
+  </footer>
+</body>
+</html>

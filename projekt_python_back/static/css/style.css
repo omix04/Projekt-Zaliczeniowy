@@ -1,0 +1,377 @@
+header{
+    background-color: rgb(250, 220, 250);
+}
+body{
+    background-color: rgb(250, 220, 250);
+}
+footer{
+    background-color: cornsilk;
+    text-align: center;
+    color: rgb(5, 5, 1);
+    padding: 10px;
+}
+h1{
+    text-align: center;
+    color: rgb(5, 5, 1);
+}
+h5{
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 200px;
+    font-size: 30px;
+}
+h6{
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 50px;
+}
+.PG{
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+  
+/* Apply styles only to the image gallery container */
+#images_gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  /* Individual column styling */
+  #images_gallery .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;  /* Adjust space between images */
+    padding: 16px;
+    justify-items: center;
+  }
+  
+  /* Styling for images inside the column */
+  #images_gallery .column img {
+    width: 100%;           /* Makes the image fill the column width */
+    height: auto;          /* Maintains aspect ratio */
+    max-width: 100%;       /* Ensures image doesn’t overflow beyond the column */
+    object-fit: cover;     /* Ensures image fills the space without distortion */
+    border-radius: 8px;
+  }
+    /* Styling for images inside the column */
+    #images_gallery .column {
+        width: 20%;           /* Makes the image fill the column width */
+        height: auto;          /* Maintains aspect ratio */
+      }
+/* Apply styles only to the video gallery container */
+#video_gallery {
+    display: flex;
+    margin-left: 280px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  /* Individual column styling */
+  #video_gallery .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Makes the grid responsive */
+    gap: 16px;  /* Adjust space between videos */
+    padding: 16px;
+    justify-items: center;
+  }
+  
+  /* Styling for videos inside the column */
+  /*
+  #video_gallery .column {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: transform 0.3s ease;
+  }
+  /*
+  
+  /* Video styling */
+  #video_gallery .column video {
+    width: 50%;           /* Makes the video fill the column width */
+    height: auto;          /* Maintains aspect ratio */
+    max-width: 50%;       /* Ensures video doesn't overflow the column */
+/*  object-fit: contain;   /* Makes sure the video fits within the container without distortion */
+    border-radius: 8px;
+  }
+  
+@media screen and (max-width: 600px) {
+    .Bar ul {
+        flex-direction: column; /* Stack the menu items vertically */
+        padding: 0;
+    }
+
+    .Bar ul li a {
+        padding: 8px;
+        font-size: 14px; /* Adjust font size to make it smaller */
+    }
+}
+.Bar ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+    background-color: cornsilk;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.Bar ul li {
+    margin: 5px;
+}
+
+.Bar ul li a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+h5{
+    margin-right: 10px;
+    font-size: 20px;
+}
+.introduction{
+    font-size: 10px;
+    text-align: justify;
+}
+.Hobbys{
+    font-size: 10px;
+    text-align: justify;
+    text-align: left;
+}
+.future-img{
+    flex: 33.33%;
+    padding: 5px;
+    margin-left: 180px;
+    margin-top: 20px;
+}
+.play-btn{
+    width: 60px;
+    position: absolute;
+    left: 33%;
+    top: 86%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+.play-btn2{
+    width: 60px;
+    position: absolute;
+    left: 66%;
+    top: 86%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+.Contact-infotact-info{
+    text-align: center;
+}
+.video-player{
+    width: 80%;
+    position: absolute;
+    margin-left: 210px;
+    top: 120%;
+}
+video:focus{
+    outline: none;
+}
+.container{
+    margin-bottom: 800px;
+}
+            /* The expanding image container */
+.container2 {
+    position: relative;
+    display: block;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.close-btn{
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    right: 20%;
+}
+/* Closable button inside the expanded image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+.video-player2{
+    width: 80%;
+    position: absolute;
+    margin-left: 310px;
+    top: 120%;
+}
+.close-btn2{
+    position: absolute;
+    width: 4%;
+    height: 10%;
+    right: 42%;
+}
+.FormaForma{
+    
+    background-color:  rgb(250, 220, 250);
+    margin: 0;
+    padding: 0;
+    
+}
+.Forma{
+    width: 50%;
+    margin: auto;
+    overflow: hidden;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    border-radius: 8px;
+}
+h9{
+    text-align: center;
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    resize: none;
+}
+button {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+.center{
+    text-align:center;
+    padding: 40px;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+.notification {
+    padding: 15px;
+    position:fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    font-size: 40px;
+    z-index: 1000;
+    text-align: center;
+    opacity: 0.95;
+    font-family: 'Trebuchet MS';
+}
+
+.notification.success {
+    background-color: rgba(76, 175, 80, 0.9); /* Green */
+    color: white;
+}
+
+.notification.error {
+    background-color: rgba(244, 67, 54, 0.9); /* Red */
+    color: white;
+}
+.prev, .next {
+    cursor: pointer;
+    position:absolute;
+    top: 200%;
+    width: auto;
+    padding: 10px;
+    margin-top: -20px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;                           
+  }
+  
+  
+  .next {
+    right: 0;
+    margin-right: 550px;
+  }
+  .prev{
+      left: 0;
+      margin-left: 550px;
+  }
+.hobby{
+    margin-bottom: 10px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: right;
+    justify-content: space-between;
+    margin: 100px;
+    max-width: 100%;
+    height: auto;
+}
+.profile-img {
+    height: 400px;
+    width: 400px;
+    margin-right: 50px;
+}
+
+/* Text styling */
+.introduction {
+    width: 400px;
+}
+
+.introduction p {
+    line-height: 2.0;
+    font-size: 17px;
+}

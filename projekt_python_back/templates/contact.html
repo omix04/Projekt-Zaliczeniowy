@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <header>
+        <title>
+            Website title
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+        <nav class="Bar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+                <li><a href="{{ url_for('skills') }}">Videos</a></li>
+                <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+                <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+            </ul>
+        </nav>
+           
+        </header>
+</head>
+
+<body>
+       
+</body>
+
+<head>
+    <footer>
+        <div class="Contact-info">
+        <p>2024 MrKenn's Handyman. All rights reserved.</p>
+        <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+        <p>Email: kenhandymann@gmail.com</p>
+        <p>For Appontiment call telephone number: +1 (437) 661-0962</p>
+        </div>
+        
+    </footer>
+</head>
+
+
+
+</html>

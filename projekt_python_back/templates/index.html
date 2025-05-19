@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <header>
+        <title>
+            Website title
+        </title>
+        <title>Website title</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+        <nav class="Bar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+                <li><a href="{{ url_for('skills') }}">Videos</a></li>
+                <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+                <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+            </ul>
+        </nav>
+           
+        </header>
+</head>
+
+<body>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+        }
+    </style>
+    <img src="{{ url_for('static', filename='resources/web/wallpaper.jpeg') }}" alt="Logo" width="1000" heigh="1000">
+
+    <h2>The services in the offer that I provide include:</h2>
+    <style>
+        .grid-container {
+          display: grid;
+          grid-template-columns: 33% 33% 33%;
+          margin-top: 2%;
+          margin-inline: 50px;
+        }
+        </style>
+    <div class="grid-container">
+    <div>
+        <h3>Furniture Assembly</h3>
+        <p>All of the duties include that's include adjusting, trimming, fitting parts, inspecting consturction, ensuring quality standards.</p>
+        <p>Most of the equipment that I will be using would be brought by me ! Such as set with drill and spare parts etc.</p>   
+    </div>
+      
+      <div>
+        <h3>Delivery</h3>
+        <p>I have an employed driver with a car. We can transport parts needed for the structure as well as furniture.</p>
+        <p>The price for transport and the possibility of transporting the order depends on the size and distance from the warehouse to the final destination.</p>
+    </div>
+      
+      <div>
+        <h3>Handyman</h3>
+        <p>I also work in painting, building, and other general maintenance and repair tasks around the household.</p>
+    </div>
+    </div>
+    <style>
+* {
+  box-sizing: border-box;
+}
+.logos{
+  display: flex;
+}
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+    </style>
+    <div class="logos">
+        <div class="column">
+            <img src="{{ url_for('static', filename='resources/web/maintenance4.jpg') }}" alt="Maintenance">
+        </div>
+        <div class="column">
+            <img src="{{ url_for('static', filename='resources/web/transport2.jpg') }}" alt="Transport">
+        </div>
+        <div class="column">
+            <img src="{{ url_for('static', filename='resources/web/hand2.jpg') }}" alt="Handyman">
+        </div>
+      </div>
+  
+</body>
+
+<head>
+    <footer>
+        <p>2024 MrKenn's Handyman. All rights reserved.</p>
+        <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+        <p>Email: kenhandymann@gmail.com</p>
+        <p>For Appontiment call telephone number: +1 (437) 661-0962</p>
+    </footer>
+</head>
+
+
+
+</html>

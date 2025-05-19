@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Website title</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<style>
+    /* General Styles */
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+    <body class="FormaFormaaboutme">
+
+<header>
+    <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+    <nav class="Bar">
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+            <li><a href="{{ url_for('skills') }}">Videos</a></li>
+            <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+            <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="profile-section">
+    <img src="face.jpg" class="profile-img" alt="Profile">
+    <div class="introduction">
+        <h5 class="hello">Hello</h5>
+        <p>My name is Kennet Zakharian, I am 23 years old, I am Ukrainian of Nigerian origin. I have spent the last 8 years in Poland. 
+        During this time I worked in various industries, from construction, installing doors in apartment blocks, to the construction of my own tables and custom-made buildings. 
+        I like to develop myself in industrial and construction fields, it is my hobby. 
+        In the future, I dream of building a large construction company here in Canada and in my home country of Nigeria.</p>
+    </div>
+</section>
+
+<section class="profile-section2">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <h5 class="HobbyT" id="HobbyT">Hobbies</h5>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="slides">
+        <div class="mySlides">
+            <img src="kenny1.jpg" style="width:500px; height:300px;">
+        </div>
+        <div class="mySlides fade">
+            <img src="kenny2.jpg" style="width:600px; height:300px;">
+        </div>
+        <div class="mySlides fade">
+            <img src="kenny3.jpg" style="width:500px; height:300px;">
+        </div>
+        <div class="mySlides fade">
+            <img src="kenny5.jpg" style="width:300px; height:300px;">
+        </div>
+
+</section>
+
+<div class="hobby">
+    <p>Since I attended primary school, I have been involved in various sports activities, mainly football and athletics. 
+    I trained professionally in athletics in Ukraine. I continued my adventure with this sport when in 2014, I moved to Poland. 
+    I have been awarded many times for my results.</p>
+</div>
+
+<!-- Footer inside body -->
+<footer class="Contact-info-aboutme">
+    <p>2024 MrKenn's Handyman. All rights reserved.</p>
+    <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+    <p>Email: kenhandymann@gmail.com</p>
+    <p>For Appointment call telephone number: +1 (437) 661-0962</p>      
+</footer>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+    }
+</script>
+
+</body>
+</html>

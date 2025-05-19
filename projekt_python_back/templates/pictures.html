@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <header>
+        <title>
+            Website title
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+        <nav class="Bar">
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+            <li><a href="{{ url_for('skills') }}">Videos</a></li>
+            <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+            <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+        </ul>
+      </nav>
+           
+        </header>
+</head>
+
+
+  <body>
+    <h1 class="PG" id="PG">Picture Gallery</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <div class="container2" id="conatiner2">
+      <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+      <img id="expandedImg" style="width:100%">
+      <div id="imgtext"></div>
+    </div>
+
+    
+  <div class="row" id="images_gallery">
+    <script>
+      function myFunction(imgs) {
+        var expandImg = document.getElementById("expandedImg");
+        var imgText = document.getElementById("imgtext");
+        expandImg.src = imgs.src;
+        imgText.innerHTML = imgs.alt;
+        expandImg.parentElement.style.display = "block";
+      }
+
+      async function loadImagesGalery() {
+        try {
+          // api call to backend, call GET on the address 
+          const res = await fetch('/api/images/examples');
+          
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+    
+          // wait for resposnse and save it as a json
+          const data = await res.json();
+    
+          if (!Array.isArray(data)) {
+            throw new Error('Invalid data format');
+          }
+    
+          // dynamically create html struct from fetched files,
+          // for every image loaded create <img/> struct
+          const reviewsHtml = data.map(r => `
+            <div class="column">
+              <img src="/static/${r.file_location}${r.file_name}" onclick="myFunction(this);"/>
+            </div>
+          `).join('');
+
+          // Add the generated HTML to the #images_gallery container
+          document.querySelector('#images_gallery').innerHTML = reviewsHtml;
+
+        } catch (error) {
+          console.error('Failed to load images:', error);
+        }
+      }
+
+      loadImagesGalery();
+    </script>
+  </div>
+</body>
+
+
+<head>
+    <footer>
+        <p>2024 MrKenn's Handyman. All rights reserved.</p>
+        <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+        <p>Email: kenhandymann@gmail.com</p>
+        <p>Telephone number: +1 (437) 661-0962</p>
+    </footer>
+</head>
+
+
+
+</html>

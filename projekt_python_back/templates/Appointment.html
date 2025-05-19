@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "uTL-8BqExyxzk-B72",
+      });
+   })();
+</script>
+
+<head>
+    <header>
+        <title>
+            Service Appointment Request
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <h1>Handyman in Winnipeg, Manitoba? Ask MrKenn's!</h1>
+        <nav class="Bar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('aboutme') }}">About me</a></li>
+                <li><a href="{{ url_for('skills') }}">Videos</a></li>
+                <li><a href="{{ url_for('pictures') }}">Pictures</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('appointment') }}">Appointment</a></li>
+                <li><a href="{{ url_for('reviews') }}">Reviews</a></li>
+            </ul>
+        </nav>
+           
+        </header>
+</head>
+
+<body class="FormaForma">
+    <div class="Forma">
+        <h9>Service Appointment Request</h9>
+        <form id="appointmentForm">
+            <label for="name">Name and Surname:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="telephone">Telephone Number:</label>
+            <input type="tel" id="telephone" name="telephone" required>
+
+            <label for="service">Service Name:</label>
+            <input type="text" id="service" name="service" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" required></textarea>
+
+            <label for="date">Date and Time:</label>
+            <input type="datetime-local" id="date" name="date" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Address of Request:</label>
+            <input type="text" id="address" name="address" required>
+
+            <button type="submit">Submit</button>
+            
+        </form>
+    </div>
+
+    <div id="notification" class="notification" style="display: none;"></div>
+
+    <script>
+    document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const telephone = document.getElementById('telephone').value;
+    const service = document.getElementById('service').value;
+    const description = document.getElementById('description').value;
+    const date = document.getElementById('date').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    
+    if (!validateForm(name, telephone, service, description, date, email, address)) {
+        return;
+    }
+
+    else if (!validateDateAndTime(date)) {
+    return;
+    }
+
+
+    emailjs.send("service_tqb2zte", "template_871ktk3", {
+    name: name,
+    telephone: telephone,
+    service: service,
+    description: description,
+    date: date,
+    email: email,
+    address: address
+    
+}).then(function(response) {
+        showNotification('Request was sent successfully!', 'success');
+        clearForm();
+    }, function(error) {
+        showNotification('Failed to send the request. Please try again.', 'error');
+    });
+});
+
+
+    function validateForm(name, telephone, service, description, date, email, address) {
+    // Regular expression patterns for validation
+    const namePattern = /^[a-zA-Z\s]+$/;
+    const telephonePattern = /^\+?[0-9\s\-]{7,15}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Name and Surname validation
+    if (!name || !namePattern.test(name)) {
+        alert('Please enter a valid Name and Surname.');
+        return false;
+    }
+
+    // Telephone number validation
+    if (!telephone || !telephonePattern.test(telephone)) {
+        alert('Please enter a valid Telephone Number.');
+        return false;
+    }
+
+    // Service Name validation
+    if (!service) {
+        alert('Please enter the Service Name.');
+        return false;
+    }
+
+    // Description validation
+    if (!description) {
+        alert('Please enter a Description.');
+        return false;
+    }
+
+    // Email validation
+    if (!email || !emailPattern.test(email)) {
+        alert('Please enter a valid E-mail address.');
+        return false;
+    }
+
+    // Address validation
+    if (!address) {
+        alert('Please enter the Address of the Request.');
+        return false;
+    }
+
+    return true; // If all validations pass
+}
+
+function validateDateAndTime(date) {
+    const selectedDate = new Date(date);
+    const currentDate = new Date();
+
+    if (!date) {
+        alert('Please select a valid Date and Time.');
+        return false;
+    }
+
+    if (selectedDate < currentDate) {
+        alert('The selected date and time cannot be in the past. Please choose a future date and time.');
+        return false;
+    }
+
+    return true;
+} 
+
+function showNotification(message, type) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.className = 'notification ' + type;
+    notification.style.display = 'block';
+
+    setTimeout(function() {
+        notification.style.display = 'none';
+    }, 6000); 
+    
+    
+}
+function clearForm() {
+    document.getElementById('appointmentForm').reset();
+}
+
+    </script>
+</body>
+
+<head>
+    <footer>
+        <div class="Contact-info">
+        <p>2024 MrKenn's Handyman. All rights reserved.</p>
+        <a href="https://www.facebook.com/profile.php?id=100005194787222">Facebook</a>
+        <p>Email: kenhandymann@gmail.com</p>
+        <p>For Appontiment call telephone number: +1 (437) 661-0962</p>
+        </div>
+        
+    </footer>
+</head>
+</html>
